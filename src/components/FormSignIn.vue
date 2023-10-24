@@ -54,7 +54,7 @@
     <span class="text-red-500 text-sm">{{ errors.password }}</span>
     <span class="text-gray-700 mt-2">
       Ainda não tem uma conta? 
-      <a class="link" href="#">Cadastre-se</a>
+      <router-link to="/signup" class="link" href="#">Cadastre-se</router-link>
     </span>
     <button class="btn btn-primary mt-4">Entrar</button>
   </form>
