@@ -1,5 +1,9 @@
 <script setup lang="ts">
   import { reactive } from 'vue';
+  import { signup } from '../services/signup';
+  import { useRouter } from 'vue-router';
+
+  const router = useRouter();
 
   const state = reactive({
     name: '',
@@ -15,7 +19,7 @@
     passwordConfirmation: '',
   });
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     if (state.name === '') return errors.name = 'Nome é obrigatório';
     else if (state.name.length >= 1) errors.name = '';
 
@@ -28,7 +32,16 @@
     if (state.passwordConfirmation === '') return errors.passwordConfirmation = 'Confirmação de senha é obrigatória';
     else if (state.passwordConfirmation.length >= 1) errors.passwordConfirmation = '';
 
-    console.log(state);
+    if (state.password !== state.passwordConfirmation) return errors.passwordConfirmation = 'As senhas não conferem';
+    else if (state.password === state.passwordConfirmation) errors.passwordConfirmation = '';
+
+    const isAuth = await signup({ ...state});
+
+    if (isAuth) {
+      router.push('/chat');
+    } else {
+      errors.email = 'Um usuário com este email já existe.';
+    }
   };
 </script>
 
