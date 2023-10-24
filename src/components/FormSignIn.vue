@@ -1,5 +1,9 @@
 <script setup lang="ts">
   import { computed, reactive } from 'vue';
+  import { signin } from '../services/signin';
+  import { useRouter } from 'vue-router';
+  
+  const router = useRouter();
 
   const state = reactive({
     email: '',
@@ -19,13 +23,19 @@
     return errors.password ? 'input input-error' : 'input input-primary';
   });
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     if (state.email === '') return errors.email = 'Email é obrigatório';
     else if (state.email.length >= 1) errors.email = '';
     if (state.password === '') return errors.password = 'Senha é obrigatória';
     else if (state.password.length >= 1) errors.password = '';
 
-    console.log(state);
+    const isAuth = await signin(state.email, state.password);
+
+    if (isAuth) {
+      router.push('/chat');
+    } else {
+      errors.email = 'Email ou senha inválidos';
+    }
   };
 </script>
 
