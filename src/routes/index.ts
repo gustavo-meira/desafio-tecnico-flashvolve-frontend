@@ -6,7 +6,18 @@ const routes: RouteRecordRaw[] = [
     path: '/',
     name: 'SignIn',
     component: () => import('../views/SignInView.vue'),
+    meta: {
+      authRoute: true,
+    },
   },
+  {
+    path: '/signup',
+    name: 'SignUp',
+    component: () => import('../views/SignUpView.vue'),
+    meta: {
+      authRoute: true,
+    },
+  }
 ];
 
 const router = createRouter({
