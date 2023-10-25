@@ -20,3 +20,9 @@ Aplicação frontend desenvolvida com Vue3 utilizando a composition API, @tansta
 4. Rode o projeto com o comando `pnpm dev`.
 
 5. Envie uma mensagem para o bot do telegram.
+
+## Pontos de melhoria
+
+- [ ] Adicionar testes unitários.
+- [ ] Adicionar testes de integração.
+- [ ] Adicionar Socket.IO para atualizar as mensagens em tempo real.
