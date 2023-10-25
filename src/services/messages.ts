@@ -14,3 +14,8 @@ export const getMessages = async (chatId: string): Promise<Message[]> => {
   return messages;
 };
 
+export const postMessage = async (chatId: string, text: string) => {
+  const { data } = await apiAuth.post<Message>(`/message`, { text, chatId });
+
+  return data;
+};
