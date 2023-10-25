@@ -33,6 +33,26 @@ const router = createRouter({
   routes,
 });
 
+router.beforeEach((to, _from, next) => {
+  if (to.meta.authRoute) {
+    const token = getToken();
+
+    if (token) {
+      return next({ name: 'Chat' });
+    }
+  }
+
+  if (to.meta.needAuth) {
+    const token = getToken();
+
+    if (!token) {
+      return next({ name: 'SignIn' });
+    }
+  }
+
+  next();
+});
+
 export const setupRoutes = (app: App) => {
   app.use(router);
 };
