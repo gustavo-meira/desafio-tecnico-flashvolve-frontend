@@ -1,5 +1,6 @@
 import { App } from 'vue';
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
+import { getToken } from '../services/token';
 
 const routes: RouteRecordRaw[] = [
   {
@@ -22,6 +23,14 @@ const routes: RouteRecordRaw[] = [
     path: '/chat',
     name: 'Chat',
     component: () => import('../views/HomeView.vue'),
+    meta: {
+      needAuth: true,
+    },
+  },
+  {
+    path: '/chat/:id',
+    name: 'ChatDetail',
+    component: () => import('../views/ChatDetailView.vue'),
     meta: {
       needAuth: true,
     },
