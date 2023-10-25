@@ -17,7 +17,15 @@ const routes: RouteRecordRaw[] = [
     meta: {
       authRoute: true,
     },
-  }
+  },
+  {
+    path: '/chat',
+    name: 'Chat',
+    component: () => import('../views/HomeView.vue'),
+    meta: {
+      needAuth: true,
+    },
+  },
 ];
 
 const router = createRouter({
