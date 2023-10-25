@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@formkit/auto-animate": "^0.8.0",
     "@tanstack/vue-query": "^5.0.5",
     "axios": "^1.5.1",
     "vue": "^3.3.4",
