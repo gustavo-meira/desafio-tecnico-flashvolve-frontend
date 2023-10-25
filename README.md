@@ -2,6 +2,8 @@
 
 Aplicação frontend desenvolvida com Vue3 utilizando a composition API, @tanstack-query e daisy-ui.
 
+Para ver o projeto rodando entre nesse [link](https://flashvolve-frontend.vercel.app/)
+
 ## Como rodar
 
 ### Pré-requisitos
